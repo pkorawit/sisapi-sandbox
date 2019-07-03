@@ -13,7 +13,7 @@ async function getClassSchedule(studentID, eduTerm, eduYear) {
 
     const targetURL = baseURL + `students/${studentID}/class-schedules/${eduYear}/${eduTerm}`;
     var config = {
-        headers: { 'AccessToken': 'ef55fcc091ee43ee845b335fe8a173bf' }
+        headers: { 'AccessToken': '63fdc611f45644ca94f2f1f982490a2b' }
     };  
     const response = await axios.get(targetURL, config);
     
