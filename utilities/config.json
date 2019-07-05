@@ -1,0 +1,8 @@
+{
+    "authentication":{
+        "username": "korawit.p",
+        "password":"KillerQueen"
+    },
+    "baseURL" : "https://api2.phuket.psu.ac.th/sis/",
+    "tokenURL" : "https://api2.phuket.psu.ac.th/common/token/request"
+}
