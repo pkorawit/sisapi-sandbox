@@ -81,9 +81,35 @@ async function getGPA(studentID) {
     return response.data;
 }
 
+async function getAllEnrollment(studentID) {
+      
+    token = await getAccessToken(studentID);   
+    const targetURL = baseURL + `students/${studentID}/enrollments/`;
+    var option = {
+        headers: { 'AccessToken': token.AccessToken }
+    };
+    const response = await axios.get(targetURL, option);
+
+    return response.data;
+}
+
+async function getEnrollment(studentID, eduTerm, eduYear) {
+      
+    token = await getAccessToken(studentID);   
+    const targetURL = baseURL + `students/${studentID}/enrollments/${eduYear}/${eduTerm}/`;
+    var option = {
+        headers: { 'AccessToken': token.AccessToken }
+    };
+    const response = await axios.get(targetURL, option);
+
+    return response.data;
+}
+
 module.exports = {
     getClassSchedule,
     getExamSchedule,
     getGrade,
-    getGPA
+    getGPA,
+    getAllEnrollment,
+    getEnrollment
 };

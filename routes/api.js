@@ -94,4 +94,42 @@ router.get('/gpa/:studentid', async (req, res) => {
 
 });
 
+router.get('/enroll/:studentid', async (req, res) => {
+  try {
+    const data = await sis.getAllEnrollment(req.params.studentid);
+    res.status(200)
+      .json({
+        status: 'success',
+        data: data
+      });
+  }
+  catch (e) { 
+    res.status(401)
+      .json({
+        status: 'error',
+        data: e.message
+      });
+  }
+
+});
+
+router.get('/enroll/:studentid/:year/:term', async (req, res) => {
+  try {
+    const data = await sis.getEnrollment(req.params.studentid,req.params.term, req.params.year);
+    res.status(200)
+      .json({
+        status: 'success',
+        data: data
+      });s
+  }
+  catch (e) { 
+    res.status(401)
+      .json({
+        status: 'error',
+        data: e.message
+      });
+  }
+
+});
+
 module.exports = router;
