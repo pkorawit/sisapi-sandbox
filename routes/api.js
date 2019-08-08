@@ -55,4 +55,43 @@ router.get('/examschedule/:studentid/:year/:term/:type', async (req, res) => {
 
 });
 
+
+router.get('/grade/:studentid', async (req, res) => {
+  try {
+    const data = await sis.getGrade(req.params.studentid);
+    res.status(200)
+      .json({
+        status: 'success',
+        data: data
+      });
+  }
+  catch (e) { 
+    res.status(401)
+      .json({
+        status: 'error',
+        data: e.message
+      });
+  }
+
+});
+
+router.get('/gpa/:studentid', async (req, res) => {
+  try {
+    const data = await sis.getGPA(req.params.studentid);
+    res.status(200)
+      .json({
+        status: 'success',
+        data: data
+      });
+  }
+  catch (e) { 
+    res.status(401)
+      .json({
+        status: 'error',
+        data: e.message
+      });
+  }
+
+});
+
 module.exports = router;

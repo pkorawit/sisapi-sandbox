@@ -57,7 +57,33 @@ async function getExamSchedule(studentID, eduTerm, eduYear, examType) {
     return response.data;
 }
 
+async function getGrade(studentID) {
+      
+    token = await getAccessToken(studentID);   
+    const targetURL = baseURL + `students/${studentID}/grades/`;
+    var option = {
+        headers: { 'AccessToken': token.AccessToken }
+    };
+    const response = await axios.get(targetURL, option);
+
+    return response.data;
+}
+
+async function getGPA(studentID) {
+      
+    token = await getAccessToken(studentID);   
+    const targetURL = baseURL + `students/${studentID}/gpa/`;
+    var option = {
+        headers: { 'AccessToken': token.AccessToken }
+    };
+    const response = await axios.get(targetURL, option);
+
+    return response.data;
+}
+
 module.exports = {
     getClassSchedule,
-    getExamSchedule
+    getExamSchedule,
+    getGrade,
+    getGPA
 };
