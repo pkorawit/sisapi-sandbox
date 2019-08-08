@@ -105,11 +105,24 @@ async function getEnrollment(studentID, eduTerm, eduYear) {
     return response.data;
 }
 
+async function getStudentInfo(studentID) {
+      
+    token = await getAccessToken(studentID);   
+    const targetURL = baseURL + `students/${studentID}/`;
+    var option = {
+        headers: { 'AccessToken': token.AccessToken }
+    };
+    const response = await axios.get(targetURL, option);
+
+    return response.data;
+}
+
 module.exports = {
     getClassSchedule,
     getExamSchedule,
     getGrade,
     getGPA,
     getAllEnrollment,
-    getEnrollment
+    getEnrollment,
+    getStudentInfo
 };

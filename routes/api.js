@@ -132,4 +132,23 @@ router.get('/enroll/:studentid/:year/:term', async (req, res) => {
 
 });
 
+router.get('/student/:studentid', async (req, res) => {
+  try {
+    const data = await sis.getStudentInfo(req.params.studentid);
+    res.status(200)
+      .json({
+        status: 'success',
+        data: data
+      });
+  }
+  catch (e) { 
+    res.status(401)
+      .json({
+        status: 'error',
+        data: e.message
+      });
+  }
+
+});
+
 module.exports = router;
