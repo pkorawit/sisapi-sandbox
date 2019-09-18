@@ -1,5 +1,6 @@
 var express = require('express');
 var sis = require('../utilities/sisproxy');
+var passport = require('../utilities/psupassport');
 var router = express.Router();
 
 
@@ -139,6 +140,27 @@ router.get('/student/:studentid', async (req, res) => {
       .json({
         status: 'success',
         data: data
+      });
+  }
+  catch (e) { 
+    res.status(401)
+      .json({
+        status: 'error',
+        data: e.message
+      });
+  }
+
+});
+
+router.post('/student/authenticate', async (req, res) => {
+  try {
+    const data = await passport.authenticate(req.body.username, req.body.password);
+    console.log(data);
+    
+    res.status(200)
+      .json({
+        status: 'success',
+        authenticated: data
       });
   }
   catch (e) { 

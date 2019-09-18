@@ -4,5 +4,10 @@
         "password":"KillerQueen"
     },
     "baseURL" : "https://api2.phuket.psu.ac.th/sis/",
-    "tokenURL" : "https://api2.phuket.psu.ac.th/common/token/request"
+    "tokenURL" : "https://api2.phuket.psu.ac.th/common/token/request",
+    "psuPassport":{
+        "authentication":{
+            "wsdl":"https://passport.psu.ac.th/authentication/authentication.asmx?WSDL"
+        }
+    }
 }
