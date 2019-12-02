@@ -34,7 +34,7 @@ async function getAccessToken(studentID){
 async function getAccount(studentID) {
 
     token = await getAccessToken(studentID);     
-    const targetURL = baseURL + `accounts/${studentID}/`;
+    const targetURL = baseURL + `common/accounts/${studentID}/`;
     var option = {
         headers: { 'AccessToken': token.AccessToken }
     };
