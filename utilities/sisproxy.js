@@ -31,6 +31,17 @@ async function getAccessToken(studentID){
 
 }
 
+async function getAccount(studentID) {
+
+    token = await getAccessToken(studentID);     
+    const targetURL = baseURL + `accounts/${studentID}/`;
+    var option = {
+        headers: { 'AccessToken': token.AccessToken }
+    };
+    const response = await axios.get(targetURL, option);
+        
+    return response.data;
+}
 
 async function getClassSchedule(studentID, eduTerm, eduYear) {
 
@@ -124,5 +135,6 @@ module.exports = {
     getGPA,
     getAllEnrollment,
     getEnrollment,
-    getStudentInfo
+    getStudentInfo,
+    getAccount
 };

@@ -15,6 +15,25 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/account/:studentid/', async (req, res) => {
+  try {
+    const data = await sis.getAccount(req.params.studentid)
+    res.status(200)
+      .json({
+        status: 'success',
+        data: data
+      });
+  }
+  catch (e) { 
+    res.status(401)
+      .json({
+        status: 'error',
+        data: e.message,
+        stacktrace: e.stacktrace
+      });
+  }
+
+});
 
 router.get('/classschedule/:studentid/:year/:term', async (req, res) => {
   try { 
